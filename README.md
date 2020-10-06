@@ -12,3 +12,5 @@ El trabajo consta en realizar una serie de Pasos sobre un programa escrito en C.
 
 ### Paso 0
 
+#### Ejecucion aplicativo sin Valgring:
+![](/home/juanicolombo/Desktop/taller/tp0/Paso 0/SInValgrind.png) 

@@ -15,3 +15,6 @@ El trabajo consta en realizar una serie de Pasos sobre un programa escrito en C.
 #### Ejecucion aplicativo sin Valgring:
 ![SInValgrind](https://user-images.githubusercontent.com/49823710/95149066-54bca680-075b-11eb-891f-cb2c923551fd.png)
 
+#### Ejecucion aplicativo con Valgring:
+
+![ConValgrind](https://user-images.githubusercontent.com/49823710/95149117-7b7add00-075b-11eb-9533-a86596fc7a30.png)

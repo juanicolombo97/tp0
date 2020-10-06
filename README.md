@@ -175,4 +175,11 @@ Los cambios realizados con respecto al paso anterior se encuentran en el wordsco
 ![pruebasHechas1](https://user-images.githubusercontent.com/49823710/95164198-e5a57900-077f-11eb-9ab0-a97249c5c954.png)
 
 
+### C
+
+![Paso6C](https://user-images.githubusercontent.com/49823710/95164568-9744aa00-0780-11eb-8842-261e5f116c8e.png)
+
+Ahora la ultima ejecuccion crea el archivo output_single_word.txt y guarda la salida del programa ahi.
+
+![Paso6C2](https://user-images.githubusercontent.com/49823710/95164631-b4797880-0780-11eb-8af9-bc80985b0cef.png)
 

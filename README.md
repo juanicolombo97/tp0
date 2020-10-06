@@ -34,3 +34,18 @@ sizeof() es una funcion utilizada para conocer la cantidad de bytes que ocupa la
 
 ![sizeofStruct](https://user-images.githubusercontent.com/49823710/95151005-f9d97e00-075f-11eb-9f7d-89b2ab24e481.png)
 
+#### E
+
+El stdin, stdout y stderr son flujos de datos que se crean al iniciar un commando en Linux. El stdin es usado para todos los inputs interactivos, como por ejemplo las llamadas a la funcion input(). Por otro lado el stdout es usado para la salida del print y declaraciones de expresion.Finalmente el stderr es donde van las indicaciones del interprete y sus mensajes de error.
+Redirigir sirve para capturar la salida de uin programa y poder mandrsela a otro o programa o a un archivo.Esto se hace mediante el operador n>. En este caso n representa el numero del descriptor de archivo, si lo omitimos usa por default el 1, osea el stdout. una forma de usarlo seria "command > file".
+Por otro lado pipe sirve para enviar la salida estandar de un comando o programa a la entrada estandar de otro. para esto se utiliza el caracter "|". 
+
+
+### Paso 1
+
+#### A
+
+![problemasEstilo](https://user-images.githubusercontent.com/49823710/95153482-edf0ba80-0765-11eb-8f58-e6a4879b2854.png)
+
+Missing space before... : Este error ocurre porque no deja un espacio entre el while y la condicion encerrada en los parentesis.
+ Mismatching spaces inside () in if:

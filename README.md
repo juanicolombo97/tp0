@@ -48,4 +48,35 @@ Por otro lado pipe sirve para enviar la salida estandar de un comando o programa
 ![problemasEstilo](https://user-images.githubusercontent.com/49823710/95153482-edf0ba80-0765-11eb-8f58-e6a4879b2854.png)
 
 Missing space before... : Este error ocurre porque no deja un espacio entre el while y la condicion encerrada en los parentesis.
- Mismatching spaces inside () in if:
+
+Mismatching spaces inside () in if: Este error se genera cuando dejamos un espacio del parentesis inicial y no en el final de if.Ej: ( "holla" == "chau").
+
+Should have zero or one spaces inside ( and ) in if: Este error se genera debido a que dejamos un espacio desde el primer parentesi y a su ves un espacio entre los valores y el operador logico.
+
+An else should appear on the same line as the preceding: Este error se da porque ponemos un salto de linea entre el parentecis que cierra el if de arriba con el, else if que le sigue.
+
+ If an else has a brace on one side, it should have it on both : Este error se da ya que el else no posee un "}" a su izquierda pero al terminar el statement condicional, si posee un "}".
+ 
+ Extra space before last semicolon.: esto se debe a que hacemos return next_State ; y no return next_State;
+ 
+ Lines should be <= 80 characters long: Este error se produce porque el comentario tiene una longitud de mas de 80 caracteres.
+ 
+ Almost always, snprintf is better than strcpy: Este error dice que es mejor usar snprintf, ya que deja en 0 lo copiado al contrario de lo que pasa con strcopy.
+ 
+ #### B
+ 
+ ![errorCOmpilador](https://user-images.githubusercontent.com/49823710/95154751-ef6fb200-0768-11eb-8323-550b65b9c1b5.png)
+
+Los errores que vemos en esta captura son errores del compilador. Estos errores se producen ya que no incluimos el paso1_wordscounter.h en nuestro main. Esto genera que cuando en la funcion main se quieren usar funciones o estructuras definidas en el .h, el compilador no las conozca, entonces es donde tira el error. Para arreglarlo basta con incluir el .h como dijimos anteriormente.
+
+#### C
+
+EL sistema no reporto ningun warning ya que no pudo compilar correctamente el programa debido a que no encontro las funciones llamadas en el main.
+
+### Paso 2
+
+#### A
+
+En el paso 2 se pasaron a corregir ciertos aspectos del codigo. EL mas notorio es que se corrigieron todos los errores de chequeo de normas de codificacion.
+
+![diffPaso2](https://user-images.githubusercontent.com/49823710/95156157-3d39e980-076c-11eb-9673-005e9f3bace0.png)

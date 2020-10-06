@@ -167,8 +167,7 @@ Primero utilizamos info functions la cual nos devuelve informacion sobre todas l
 
 ### A
 
-Los cambios realizados con respecto al paso anterior se encuentran en el wordscounter. EL primero que podemos vver es como ya declara a  la variable delim_words como una constante y ya no hace malloc de esta misma. ambien elimina como delimitador al \0.
-
+Los cambios realizados con respecto al paso anterior se encuentran en el wordscounter.COmo por ejemplo que delim_words pasa a ser una variuable global.
 ### B
 
 ![PruebasHechas2](https://user-images.githubusercontent.com/49823710/95164185-dcb4a780-077f-11eb-8a31-81a5b8287501.png)
@@ -177,9 +176,9 @@ Los cambios realizados con respecto al paso anterior se encuentran en el wordsco
 
 ### C
 
-![Paso6C](https://user-images.githubusercontent.com/49823710/95164568-9744aa00-0780-11eb-8842-261e5f116c8e.png)
+![Paso6C](https://user-images.githubusercontent.com/49823710/95165601-b6443b80-0782-11eb-8808-aa4970791540.png)
 
-Ahora la ultima ejecuccion crea el archivo output_single_word.txt y guarda la salida del programa ahi.
+En la ultima corrida vemos como almacena la salida creando un archivo output_single_word.txt.
 
-![Paso6C2](https://user-images.githubusercontent.com/49823710/95164631-b4797880-0780-11eb-8af9-bc80985b0cef.png)
+![Paso6C2](https://user-images.githubusercontent.com/49823710/95165644-cf4cec80-0782-11eb-8042-fb234511b566.png)
 

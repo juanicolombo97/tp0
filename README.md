@@ -30,6 +30,8 @@ Valgrind es una herramiento utilizada para debuggear. Esta es muy util al moment
 sizeof() es una funcion utilizada para conocer la cantidad de bytes que ocupa la variable o tipo de dato que se le pase al mismo.
 ![c](https://user-images.githubusercontent.com/49823710/95150043-b4b44c80-075d-11eb-8718-b4cab3e169f9.png)
 
+
+
 #### D
 
 ![sizeofStruct](https://user-images.githubusercontent.com/49823710/95151005-f9d97e00-075f-11eb-9f7d-89b2ab24e481.png)
@@ -80,3 +82,14 @@ EL sistema no reporto ningun warning ya que no pudo compilar correctamente el pr
 En el paso 2 se pasaron a corregir ciertos aspectos del codigo. EL mas notorio es que se corrigieron todos los errores de chequeo de normas de codificacion.
 
 ![diffPaso2](https://user-images.githubusercontent.com/49823710/95156157-3d39e980-076c-11eb-9673-005e9f3bace0.png)
+
+#### B
+
+![correctaVerificacionPaso2](https://user-images.githubusercontent.com/49823710/95156224-678ba700-076c-11eb-9812-41848a04c801.png)
+
+#### C
+
+![paso2COMpilador](https://user-images.githubusercontent.com/49823710/95156352-c3eec680-076c-11eb-9be3-3686922830d8.png)
+
+
+

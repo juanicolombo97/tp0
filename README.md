@@ -146,4 +146,33 @@ EN este paso uno de los primeros cambios que notamos al correr diff, es que se c
 
 #### B
 
+![Paso5B](https://user-images.githubusercontent.com/49823710/95162239-91989580-077b-11eb-8e0f-a16beab85c86.png)
+
+En este caso podemos ver que el motivo por el cual fallan las pruebas de "INvalid file" y "SIngle word", es debido a que retornan un resultado diferente al espreado.EL sercom nos muestra esto tirandonos el siguiente error:  
+[Error] Se encontraron diferencias entre las salidas obtenidas y las esperadas.
+
+#### C
+
+![Paso5Hex](https://user-images.githubusercontent.com/49823710/95162359-e1775c80-077b-11eb-939a-75ad2abadc3f.png)
+
+El ultimo caracter es una "d", ya que vemos el valor 64 el cual representa la "d" en hexadecimal.
+
+#### D
+
+![gdbPaso5](https://user-images.githubusercontent.com/49823710/95162854-f7395180-077c-11eb-9062-9541d0c0c8ea.png)
+
+Primero utilizamos info functions la cual nos devuelve informacion sobre todas las funciones definidas.Luego esta list "funcion" la cual muestra todas las lineas centradas al principio de la funcion. Despues esta list solo qu eimprime las lineas anteriores a las impresas anteriormente.Despues esta break que lo que hace es crear un breakpoint en este caso en la linea pasada.En el caso que se pase un archivo este va a setear el breakpoint en ese, y sino lo hace en el archivo actual.FInalmente run runs the program.EL debugger no se detuvo en la linea 45 ya que al no especificar que el breakpoint era en la linea 45 del archivo wordscounter.c, este lo trato de establecer en el archivo main, el cual no cuenta con linea 45.
+
+### Paso 6
+
+### A
+
+Los cambios realizados con respecto al paso anterior se encuentran en el wordscounter. EL primero que podemos vver es como ya declara a  la variable delim_words como una constante y ya no hace malloc de esta misma. ambien elimina como delimitador al \0.
+
+### B
+
+![PruebasHechas2](https://user-images.githubusercontent.com/49823710/95164185-dcb4a780-077f-11eb-8a31-81a5b8287501.png)
+![pruebasHechas1](https://user-images.githubusercontent.com/49823710/95164198-e5a57900-077f-11eb-9ab0-a97249c5c954.png)
+
+
 

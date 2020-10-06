@@ -69,7 +69,7 @@ An else should appear on the same line as the preceding: Este error se da porque
  
  ![errorCOmpilador](https://user-images.githubusercontent.com/49823710/95154751-ef6fb200-0768-11eb-8323-550b65b9c1b5.png)
 
-Los errores que vemos en esta captura son errores del compilador. Estos errores se producen ya que no incluimos el paso1_wordscounter.h en nuestro main. Esto genera que cuando en la funcion main se quieren usar funciones o estructuras definidas en el .h, el compilador no las conozca, entonces es donde tira el error. Para arreglarlo basta con incluir el .h como dijimos anteriormente.
+Los errores que vemos en esta captura son errores del linker. Estos errores se producen ya que no incluimos el paso1_wordscounter.h en nuestro main. Esto genera que cuando en la funcion main se quieren usar funciones o estructuras definidas en el .h, el compilador no las conozca, entonces es donde tira el error. Para arreglarlo basta con incluir el .h como dijimos anteriormente.
 
 #### C
 
@@ -91,5 +91,59 @@ En el paso 2 se pasaron a corregir ciertos aspectos del codigo. EL mas notorio e
 
 ![paso2COMpilador](https://user-images.githubusercontent.com/49823710/95156352-c3eec680-076c-11eb-9be3-3686922830d8.png)
 
+error: unknown type name ‘size_t’: Este error se debe a que no se incluyo la libreria <stddef.h> que es donde esta declarada esta funcion.Es un error del linker.
+
+ error: unknown type name ‘FILE’: Este error se debe a que no se incluyo la libreria <stdio.h>. Es de linker.
+ 
+ error: conflicting types for ‘wordscounter_get_words’: Este error se da ya que no se incluye el .h en el wordscounter.c, entonces cuando decladra la funcion wordscopunter_get_words , el compilador reconoce que esta funcion ya fue declarada en el .h y entonces, piensa que se quiere crear una funcion distinta pero con el mismo nombre y eso no se puede.
+ 
+ error: implicit declaration of function ‘malloc’ : Este error se da ya que no se incluyo el <stdlib.h>. Esto es un error del linker.
+
+ 
+### Paso 3
+
+#### A
+
+Las correcciones realizadas en este punto con respecto al 2, fueron basicamente la inclusion de las librerias que faltaban.
+
+#### B
+
+![Paso3ErrorEjecutable](https://user-images.githubusercontent.com/49823710/95157567-cbfc3580-076f-11eb-9447-a34d9c092194.png)
+
+undefined reference to "wordscounter_destroy" : Este error se genera ya que esta funcion si bien esta definida en el .h, no esta implementada en el .c.Este es un error del compilador.
+
+### Paso 4
+
+#### A
+
+Respecto a las otras entregas, en esta se agrego la funcion wordscopunter_destroy() al paso4_wordscounter.c, el cual generaba un error en el pasado.Tambien esta es la primera prueba en la que finalmente se corre el ejecutable y corren las pruebas. 
+
+#### B
+
+![Paso4TDAValgrind](https://user-images.githubusercontent.com/49823710/95158895-1cc15d80-0773-11eb-84f9-4bbfd45357cd.png)
+
+En este caso vemos com ovalgrind nos esta diciendo que en el programa se aloco memoria, que nunca fue liberada. POdemos ver como dice en HEAP SUMMARY, que se hicieron 218 allocs pero solo 2 frees.
+
+#### C
+ 
+En esta prueba podemos ver que nos da un error que dice "memcpy_chk: buyffer overflow  detected", este error salta ya que en el main en la linea 13, cuando hacemos memcpy, le pasamos la variable filepath, que fue inicializada con un espacio de 30. En el caso de esta prueba el path del archivo excede esa cantidad de memoria pedida, con lo cual lleva a un overflow.
+
+#### D
+
+Este error se podria solucionar con strncpy ya que este al encontrarse con un valor NUlo para de copiar, encambio memcpy no lo hace.Al cambiar lo que hubiese ocurrido es que no tiraria el mismo error, pero al reservar menos memoria de la que requiere, no va a copiar bien la direccion del archivo entonces no lo va a poder abrir.
+
+#### E
+
+Segmentation fault es un error que aparece en el codigo, cuando nosotros queremos acceder a una porcion de memoria que no tenemos acceso. Un ejemplo podria ser si tenemos una lista de 10 elementos y hacemos un for recorriendo hasta el elemento 11. En ese caso estariamos accediendo a memoria que no pedimos, lo cual generaria un segmentation fault.
+
+En cambio un buffer overflow se da cuando nosotros queremos escribir informacion a un buffer y este se pasa de los limites del mismo. UN claro ejemplo es cuando en este paso queremos hacer memcpy del filepath a la variable, la cual reservamos un espacio de 30 caracteres, pero la direccion del archivo era mayor, con lo cual se paso del limite del buffer, generando asi el error.
+
+### Paso 5
+
+#### A
+
+EN este paso uno de los primeros cambios que notamos al correr diff, es que se cambio el memcpy por el srtncpy.Esto se hizo ya que en el paso anterior vimos como saltaba buffer overflow al utilizar memcpy.
+
+#### B
 
 

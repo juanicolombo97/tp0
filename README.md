@@ -12,9 +12,20 @@ El trabajo consta en realizar una serie de Pasos sobre un programa escrito en C.
 
 ### Paso 0
 
+#### A
+
 #### Ejecucion aplicativo sin Valgring:
 ![SInValgrind](https://user-images.githubusercontent.com/49823710/95149066-54bca680-075b-11eb-891f-cb2c923551fd.png)
 
 #### Ejecucion aplicativo con Valgring:
 
 ![ConValgrind](https://user-images.githubusercontent.com/49823710/95149117-7b7add00-075b-11eb-9533-a86596fc7a30.png)
+
+#### B
+
+Valgrind es una herramiento utilizada para debuggear. Esta es muy util al momento de trabajar con lenguajes como C o C++ en el cual se debe alocar memoria manualmente para las variables y liberarla tambien. A medida que el programa crece, cada ves se hace mas dificil seguir errores o perdidas en memoria. Aca es donde entra valgrind en la cual nos resume los errrores de memoria que encuentra y da cierta informacion sobre el error , para asi el usuario poder resolver el problema.
+
+#### C
+
+sizeof() es una funcion utilizada para conocer la cantidad de bytes que ocupa la variable o tipo de dato que se le pase al mismo.
+

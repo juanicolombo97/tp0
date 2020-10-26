@@ -23,11 +23,11 @@ El trabajo consta en realizar una serie de Pasos sobre un programa escrito en C.
 
 #### B
 
-Valgrind es una herramiento utilizada para debuggear. Esta es muy util al momento de trabajar con lenguajes como C o C++ en el cual se debe alocar memoria manualmente para las variables y liberarla tambien. A medida que el programa crece, cada ves se hace mas dificil seguir errores o perdidas en memoria. Aca es donde entra valgrind en la cual nos resume los errrores de memoria que encuentra y da cierta informacion sobre el error , para asi el usuario poder resolver el problema.
+Valgrind es una herramienta utilizada para debuggear. Esta es muy útil al momento de trabajar con lenguajes como C o C++ en los cuales se debe alocar memoria manualmente para las variables y liberarla tambien. A medida que el programa crece, cada vez se hace más difícil seguir errores o pérdidas en memoria. Acá es donde entra valgrind ¿en la cual? nos resume los errrores de memoria que encuentra y da cierta informacion sobre el error , para asi el usuario poder resolver el problema.
 
 #### C
 
-sizeof() es una funcion utilizada para conocer la cantidad de bytes que ocupa la variable o tipo de dato que se le pase al mismo.
+sizeof() es un operador utilizado para conocer la cantidad de bytes que ocupa la variable o tipo de dato que se le pase al mismo.
 ![c](https://user-images.githubusercontent.com/49823710/95150043-b4b44c80-075d-11eb-8718-b4cab3e169f9.png)
 
 
@@ -35,6 +35,7 @@ sizeof() es una funcion utilizada para conocer la cantidad de bytes que ocupa la
 #### D
 
 ![sizeofStruct](https://user-images.githubusercontent.com/49823710/95151005-f9d97e00-075f-11eb-9f7d-89b2ab24e481.png)
+Por qué no da igual? Qué pasa si usás un short y un char?
 
 #### E
 
@@ -63,17 +64,19 @@ An else should appear on the same line as the preceding: Este error se da porque
  
  Lines should be <= 80 characters long: Este error se produce porque el comentario tiene una longitud de mas de 80 caracteres.
  
- Almost always, snprintf is better than strcpy: Este error dice que es mejor usar snprintf, ya que deja en 0 lo copiado al contrario de lo que pasa con strcopy.
+ Almost always, snprintf is better than strcpy: Este error dice que es mejor usar snprintf, ya que deja en 0 lo copiado al contrario de lo que pasa con strcpy. En realidad es porque snprintf te permite establecer una cantidad máxima de bytes a copiar
  
  #### B
  
  ![errorCOmpilador](https://user-images.githubusercontent.com/49823710/95154751-ef6fb200-0768-11eb-8323-550b65b9c1b5.png)
 
 Los errores que vemos en esta captura son errores del linker. Estos errores se producen ya que no incluimos el paso1_wordscounter.h en nuestro main. Esto genera que cuando en la funcion main se quieren usar funciones o estructuras definidas en el .h, el compilador no las conozca, entonces es donde tira el error. Para arreglarlo basta con incluir el .h como dijimos anteriormente.
+Se debería explicar cada error, y son errores reportados por el compilador, no por el linker. Algunos de ellos son originalmente warnings (los que dicen -W), que fueron tratados como errores por el uso de -Werror
 
 #### C
 
 EL sistema no reporto ningun warning ya que no pudo compilar correctamente el programa debido a que no encontro las funciones llamadas en el main.
+Leer la corrección del punto anterior
 
 ### Paso 2
 
@@ -91,13 +94,13 @@ En el paso 2 se pasaron a corregir ciertos aspectos del codigo. EL mas notorio e
 
 ![paso2COMpilador](https://user-images.githubusercontent.com/49823710/95156352-c3eec680-076c-11eb-9be3-3686922830d8.png)
 
-error: unknown type name ‘size_t’: Este error se debe a que no se incluyo la libreria <stddef.h> que es donde esta declarada esta funcion.Es un error del linker.
+error: unknown type name ‘size_t’: Este error se debe a que no se incluyo la libreria <stddef.h> que es donde esta declarada esta funcion.Es un error del linker. <-- compiler
 
- error: unknown type name ‘FILE’: Este error se debe a que no se incluyo la libreria <stdio.h>. Es de linker.
+ error: unknown type name ‘FILE’: Este error se debe a que no se incluyo la libreria <stdio.h>. Es de linker. <-- compiler
  
  error: conflicting types for ‘wordscounter_get_words’: Este error se da ya que no se incluye el .h en el wordscounter.c, entonces cuando decladra la funcion wordscopunter_get_words , el compilador reconoce que esta funcion ya fue declarada en el .h y entonces, piensa que se quiere crear una funcion distinta pero con el mismo nombre y eso no se puede.
  
- error: implicit declaration of function ‘malloc’ : Este error se da ya que no se incluyo el <stdlib.h>. Esto es un error del linker.
+ error: implicit declaration of function ‘malloc’ : Este error se da ya que no se incluyo el <stdlib.h>. Esto es un error del linker. <-- compiler
 
  
 ### Paso 3
@@ -110,7 +113,7 @@ Las correcciones realizadas en este punto con respecto al 2, fueron basicamente 
 
 ![Paso3ErrorEjecutable](https://user-images.githubusercontent.com/49823710/95157567-cbfc3580-076f-11eb-9447-a34d9c092194.png)
 
-undefined reference to "wordscounter_destroy" : Este error se genera ya que esta funcion si bien esta definida en el .h, no esta implementada en el .c.Este es un error del compilador.
+undefined reference to "wordscounter_destroy" : Este error se genera ya que esta funcion si bien esta definida en el .h, no esta implementada en el .c.Este es un error del compilador. <-- ahora sí es del linker (fijate que dice LD)
 
 ### Paso 4
 
@@ -123,6 +126,7 @@ Respecto a las otras entregas, en esta se agrego la funcion wordscopunter_destro
 ![Paso4TDAValgrind](https://user-images.githubusercontent.com/49823710/95158895-1cc15d80-0773-11eb-84f9-4bbfd45357cd.png)
 
 En este caso vemos com ovalgrind nos esta diciendo que en el programa se aloco memoria, que nunca fue liberada. POdemos ver como dice en HEAP SUMMARY, que se hicieron 218 allocs pero solo 2 frees.
+También dice dónde se hicieron los mallocs que no se liberaron, y habla de un archivo que no se cerró
 
 #### C
  
@@ -134,7 +138,7 @@ Este error se podria solucionar con strncpy ya que este al encontrarse con un va
 
 #### E
 
-Segmentation fault es un error que aparece en el codigo, cuando nosotros queremos acceder a una porcion de memoria que no tenemos acceso. Un ejemplo podria ser si tenemos una lista de 10 elementos y hacemos un for recorriendo hasta el elemento 11. En ese caso estariamos accediendo a memoria que no pedimos, lo cual generaria un segmentation fault.
+Segmentation fault es un error que aparece en el codigo, cuando nosotros queremos acceder a una porcion de memoria que no tenemos acceso. Un ejemplo podria ser si tenemos una lista de 10 elementos y hacemos un for recorriendo hasta el elemento 11. En ese caso estariamos accediendo a memoria que no pedimos, lo cual generaria un segmentation fault. <-- La definición está bien, pero el ejemplo habla de un buffer overflow
 
 En cambio un buffer overflow se da cuando nosotros queremos escribir informacion a un buffer y este se pasa de los limites del mismo. UN claro ejemplo es cuando en este paso queremos hacer memcpy del filepath a la variable, la cual reservamos un espacio de 30 caracteres, pero la direccion del archivo era mayor, con lo cual se paso del limite del buffer, generando asi el error.
 
